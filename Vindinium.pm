@@ -25,7 +25,7 @@ has 'training'  => (is => 'ro', isa => 'Bool', default => 0);
 sub _build__ua
 {
 	my $self = shift;
-	return LWP::UserAgent->new(agent => join "/", $self->bot_name, $self->version);
+	return LWP::UserAgent->new(timeout => 60, agent => join "/", $self->bot_name, $self->version);
 }
 
 sub _build_start_url
@@ -103,6 +103,15 @@ sub print_board
 	my $id = '@' . $hero->{id};
 
 	say for map { join '', map {$_ eq $id ? "\e[31m$id\e[0m" : $_} @$_ } @{$self->board};
+}
+
+sub print_heroes
+{
+	my $self = shift;
+	for my $p (@{$self->game->{game}{heroes}})
+	{
+		say join ', ', map { $_ . ": " . $p->{$_} } qw(name life gold mineCount);
+	}
 }
 
 sub valid_directions
