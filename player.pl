@@ -6,7 +6,7 @@ use Data::Dumper;
 use Vindinium;
 
 my $x = Vindinium->new(key => '????????', bot_name => 'Nurdle');
-# my $x = Vindinium->new(key => '????????', bot_name => 'Nurdle', training => 1, moves => 50);
+# my $x = Vindinium->new(key => '????????', bot_name => 'Nurdle', training => 1, turns => 50);
 
 $x->print_board;
 $x->print_heroes;
