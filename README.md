@@ -13,7 +13,7 @@ my $x = Vindinium->new(
     key => '????????',
     bot_name => 'Nurdle', # optional
     training => 1,        # optional, defaults to 0
-    moves => 10           # optional, for training mode
+    turns => 50           # optional, for training mode only
 );
 
 $x->print_board;  # prints the current playing board
@@ -34,8 +34,9 @@ while ($x->in_progress)
   }
 
   # valid_directions() returns an array of directions you can move in
+  # e.g.:
   # my @dirs = $x->valid_directions;
-  # my ($move) = $moves[int rand scalar @dirs];
+  # my ($move) = $dirs[int rand scalar @dirs];
   # say "\nMoving $move";
   # $x->move($move);
 
