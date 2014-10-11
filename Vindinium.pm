@@ -25,7 +25,11 @@ has 'training'  => (is => 'ro', isa => 'Bool', default => 0);
 sub _build__ua
 {
 	my $self = shift;
-	return LWP::UserAgent->new(timeout => 60, agent => join "/", $self->bot_name, $self->version);
+	return LWP::UserAgent->new(
+		timeout => 60,
+		keep_alive => 1,
+		agent => join "/", $self->bot_name, $self->version
+	);
 }
 
 sub _build_start_url
